@@ -1,7 +1,7 @@
 pipeline {
     agent {
         label 'ec2-fleet'
-    }    '
+    }    
     stages {
         stage ("build"){
             agent {
