@@ -4,15 +4,12 @@ pipeline {
     }    
     stages {
         stage ("build"){
-            agent {
-                docker {
-                    image 'openjdk:11'
-                }            
-            }
             steps{
                 script{
-                    sh 'chmod +x gradlew'
-                    sh './gradlew build'
+                    docker.image('openjdk:11').inside{
+                        sh 'chmod +x gradlew'
+                        sh './gradlew build'
+                    }    
                 }
             }
         }
